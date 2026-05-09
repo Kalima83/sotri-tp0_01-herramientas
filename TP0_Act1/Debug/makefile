@@ -38,34 +38,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TP0_Act01
+BUILD_ARTIFACT_NAME := sotri-tp0_01-stm32_project
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TP0_Act01.elf \
+sotri-tp0_01-stm32_project.elf \
 
 MAP_FILES += \
-TP0_Act01.map \
+sotri-tp0_01-stm32_project.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TP0_Act01.list \
+sotri-tp0_01-stm32_project.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TP0_Act01.elf secondary-outputs
+main-build: sotri-tp0_01-stm32_project.elf secondary-outputs
 
 # Tool invocations
-TP0_Act01.elf TP0_Act01.map: $(OBJS) $(USER_OBJS) C:\Users\danie\OneDrive\SE\RTOS\TP\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TP0_Act01.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\danie\OneDrive\SE\RTOS\TP\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP0_Act01.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+sotri-tp0_01-stm32_project.elf sotri-tp0_01-stm32_project.map: $(OBJS) $(USER_OBJS) C:\Users\danie\OneDrive\SE\RTOS\SOTR1_TP\TP0_Act1\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "sotri-tp0_01-stm32_project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\danie\OneDrive\SE\RTOS\SOTR1_TP\TP0_Act1\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sotri-tp0_01-stm32_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,14 +74,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TP0_Act01.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TP0_Act01.list"
+sotri-tp0_01-stm32_project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "sotri-tp0_01-stm32_project.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TP0_Act01.elf TP0_Act01.list TP0_Act01.map default.size.stdout
+	-$(RM) default.size.stdout sotri-tp0_01-stm32_project.elf sotri-tp0_01-stm32_project.list sotri-tp0_01-stm32_project.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
